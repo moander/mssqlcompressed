@@ -25,10 +25,12 @@ using System.IO;
 
 namespace MSSQLBackupPipe.StdPlugins
 {
-    public interface IBackupTransformer : IBackupPlugin
+    public interface IBackupDestination : IBackupPlugin
     {
-        Stream GetBackupWriter(string config, Stream writeToStream);
-        Stream GetRestoreReader(string config, Stream readFromStream);
+        Stream GetBackupWriter(string config);
+        Stream GetRestoreReader(string config);
         string GetConfigHelp();
+        void CleanupOnAbort();
+
     }
 }

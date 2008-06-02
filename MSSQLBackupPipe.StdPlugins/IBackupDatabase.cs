@@ -21,14 +21,14 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using System.IO;
 
 namespace MSSQLBackupPipe.StdPlugins
 {
-    public interface IBackupTransformer : IBackupPlugin
+    public interface IBackupDatabase : IBackupPlugin
     {
-        Stream GetBackupWriter(string config, Stream writeToStream);
-        Stream GetRestoreReader(string config, Stream readFromStream);
+        string GetBackupSqlStatement(string config, string device);
+        string GetRestoreSqlStatement(string config, string device);
         string GetConfigHelp();
+
     }
 }
