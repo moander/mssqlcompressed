@@ -18,17 +18,21 @@
     along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Data.SqlClient;
+#pragma once
 
-namespace MSSQLBackupPipe.StdPlugins
+using namespace System;
+
+namespace VirtualBackupDevice 
 {
-    public interface IBackupDatabase : IBackupPlugin
-    {
-        void ConfigureBackupCommand(string config, List<string> deviceNames, SqlCommand cmd);
-        void ConfigureRestoreCommand(string config, List<string> deviceNames, SqlCommand cmd);
-        string GetInstanceName(string config);
-    }
+	ref class StringWrapper
+	{
+	public:
+		StringWrapper(String^ s);
+		~StringWrapper(void);
+
+		LPCWSTR ToPointer();
+
+	private:
+		IntPtr mIntPtr;
+	};
 }

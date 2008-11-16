@@ -18,17 +18,36 @@
     along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Data.SqlClient;
+#include "StdAfx.h"
+#include "StringWrapper.h"
 
-namespace MSSQLBackupPipe.StdPlugins
+using namespace System::Runtime::InteropServices;
+
+namespace VirtualBackupDevice 
 {
-    public interface IBackupDatabase : IBackupPlugin
-    {
-        void ConfigureBackupCommand(string config, List<string> deviceNames, SqlCommand cmd);
-        void ConfigureRestoreCommand(string config, List<string> deviceNames, SqlCommand cmd);
-        string GetInstanceName(string config);
-    }
+	StringWrapper::StringWrapper(String^ s)
+	{
+		mIntPtr = IntPtr::Zero;
+		if (!String::IsNullOrEmpty(s)) 
+		{
+			mIntPtr = Marshal::StringToHGlobalUni(s);
+		}
+	}
+
+
+	StringWrapper::~StringWrapper(void)
+	{
+		Marshal::FreeHGlobal(mIntPtr);
+	}
+
+	LPCWSTR StringWrapper::ToPointer()
+	{
+		LPCWSTR instanceNamePtr = NULL;
+		if (mIntPtr != IntPtr::Zero) 
+		{
+			instanceNamePtr = (LPCWSTR)mIntPtr.ToPointer();
+		}
+
+		return instanceNamePtr;
+	}
 }

@@ -18,39 +18,54 @@
     along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-
 #pragma once
 
-#include "Stdafx.h"
 
 
+#include "VirtualDeviceSetConfig.h"
+#include "VirtualDevice.h"
+#include "StringWrapper.h"
 
-#include "DeviceCommandType.h"
 
-
-
-
+using namespace System;
+using namespace System::Collections::Generic;
 
 
 namespace VirtualBackupDevice 
 {
+	
 
-	public ref class CommandBuffer
+
+	public ref class VirtualDeviceSet
 	{
 	public:
-		CommandBuffer();
-		array<unsigned char>^ GetBuffer();
-		void SetBuffer(array<unsigned char>^ buff, UINT32 count);
-		UINT32 GetCount();
-		DeviceCommandType GetCommandType();
+		VirtualDeviceSet(void);
+		~VirtualDeviceSet(void);
 
-	internal:
-		void SetCommand(VDC_Command* cmd);
-		VDC_Command* GetCommand();
+		void CreateEx(String^ instanceName, String^ deviceSetName, VirtualDeviceSetConfig^ config);
+
+		VirtualDeviceSetConfig^ GetConfiguration(Nullable<TimeSpan> timeOut);
+
+		VirtualDevice^ OpenDevice(String^ deviceName);
+
+		void SignalAbort();
+
+		void Close();
 
 	private:
-		VDC_Command* mCmd;
-		array<unsigned char>^ mCachedBuffer;
+		enum class VirtualDeviceSetState
+		{
+			Unconfigured,
+			Configurable,
+			Initializing,
+			Active,
+			NormallyTerminated,
+			AbnormallyTerminated
+		};
 
+		//String^ mDeviceSetName;
+		IClientVirtualDeviceSet2* mVds;
+		VirtualDeviceSetState mDeviceSetState;
+		UINT32 mDeviceCount;
 	};
 }
