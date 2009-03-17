@@ -1,0 +1,20 @@
+syntax: glob
+x64\release/*
+release/*
+out/*
+obj/*
+debug/*
+VirtualBackupDevice\x64\Release/*
+VirtualBackupDevice\x64\Debug/*
+VirtualBackupDevice\Release/*
+VirtualBackupDevice\Debug/*
+ReleasePackaging\obj/*
+ReleasePackaging\bin\x86\Release/*
+ReleasePackaging\bin\x64\Release/*
+MSSQLBackupPipe\obj/*
+MSSQLBackupPipe\bin\Debug\*
+MSSQLBackupPipe\bin\Release\*
+MSSQLBackupPipe.ncb
+MSSQLBackupPipe.StdPlugins\obj/*
+MSSQLBackupPipe.StdPlugins\bin\Release/*
+MSSQLBackupPipe.StdPlugins\bin\Debug/*
