@@ -21,3 +21,4 @@ MSSQLBackupPipe.StdPlugins\bin\Release/*
 MSSQLBackupPipe.StdPlugins\bin\Debug/*
 glob:MSSQLBackupPipe.suo
 glob:VirtualBackupDevice/*.user
+glob:Release/*
