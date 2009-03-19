@@ -4,11 +4,13 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{64799887-2FDF-4B40-8757-7B2E4B0F735D}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{486443C8-A843-409A-8A23-EAC5325A5171}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MSSQLBackupPipe</RootNamespace>
-    <AssemblyName>msbp</AssemblyName>
+    <RootNamespace>MSSQLBackupPipe.Common</RootNamespace>
+    <AssemblyName>MSSQLBackupPipe.Common</AssemblyName>
+    <StartupObject>
+    </StartupObject>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>MSSQLCompressedBackup.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
@@ -35,16 +37,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandLineNotifier.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="BackupPipeSystem.cs" />
+    <Compile Include="ConfigPair.cs" />
+    <Compile Include="DeviceThread.cs" />
+    <Compile Include="DisposableList.cs" />
+    <Compile Include="ExecutionExceptions.cs" />
+    <Compile Include="IUpdateNotification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Util.cs" />
+    <Compile Include="SqlThread.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MSSQLBackupPipe.Common\MSSQLBackupPipe.Common.csproj">
-      <Project>{486443C8-A843-409A-8A23-EAC5325A5171}</Project>
-      <Name>MSSQLBackupPipe.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MSSQLBackupPipe.StdPlugins\MSSQLBackupPipe.StdPlugins.csproj">
       <Project>{FD720360-0D0F-410B-990E-36DE4BEB9F23}</Project>
       <Name>MSSQLBackupPipe.StdPlugins</Name>
@@ -56,14 +58,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="MSSQLCompressedBackup.snk" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="COPYING.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="README.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("MSSQLBackupPipe.StdPlugins")]
+[assembly: AssemblyTitle("MSSQLBackupPipe.Common")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("MSSQL Compressed Backup")]
-[assembly: AssemblyProduct("MSSQLBackupPipe.StdPlugins")]
+[assembly: AssemblyProduct("MSSQLBackupPipe.Common")]
 [assembly: AssemblyCopyright("Copyright © Clay Lenhart 2009")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("c090ea0c-4215-41ed-9c50-275d054cc8f7")]
+[assembly: Guid("25691d9d-ac12-4c51-b2af-ea2840f0f5e8")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -29,8 +29,5 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-// You can specify all the values or you can default the Revision and Build Numbers 
-// by using the '*' as shown below:
 [assembly: AssemblyVersion("1.2.*")]
 [assembly: AssemblyFileVersion("1.2")]
-
