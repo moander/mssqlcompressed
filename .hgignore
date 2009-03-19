@@ -1,4 +1,5 @@
 syntax: glob
+ReleasePackaging/*.user
 VirtualBackupDevice/*.user
 MSSQLBackupPipe/*.user
 MSSQLBackupPipe.suo
