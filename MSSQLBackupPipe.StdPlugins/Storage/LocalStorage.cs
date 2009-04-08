@@ -109,14 +109,19 @@ namespace MSSQLBackupPipe.StdPlugins.Storage
             mFileInfosToDeleteOnAbort.Clear();
 
 
-            Dictionary<string, string> parsedConfig = ConfigUtil.ParseConfig(config);
+            Dictionary<string, List<string>> parsedConfig = ConfigUtil.ParseArrayConfig(config);
 
             if (!parsedConfig.ContainsKey("path"))
             {
                 throw new ArgumentException("local: The path property is required.");
             }
 
-            FileInfo fileInfo = new FileInfo(parsedConfig["path"]);
+            List<string> paths = parsedConfig["path"];
+            List<FileInfo> fileInfos = paths.ConvertAll<FileInfo>(delegate(string path)
+            {
+                return new FileInfo(path);
+            });
+
             parsedConfig.Remove("path");
 
 
@@ -126,9 +131,20 @@ namespace MSSQLBackupPipe.StdPlugins.Storage
                 throw new ArgumentException(string.Format("local: Unknown parameter: {0}", key));
             }
 
-            Console.WriteLine(string.Format("local: path={0}", fileInfo.FullName));
+            Console.WriteLine(string.Format("local:"));
+            foreach (FileInfo fi in fileInfos)
+            {
+                Console.WriteLine(string.Format("\tpath={0}", fi.FullName));
+            }
 
-            return new Stream[] { fileInfo.Open(FileMode.Open) };
+            List<Stream> results = new List<Stream>(fileInfos.Count);
+            foreach (FileInfo fi in fileInfos)
+            {
+                results.Add(fi.Open(FileMode.Open));
+            }
+
+            return results.ToArray();
+
         }
 
         public string GetConfigHelp()

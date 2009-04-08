@@ -1,4 +1,6 @@
 syntax: glob
+VirtualBackupDevice/*.user
+MSSQLBackupPipe.suo
 x64\release/*
 release/*
 out/*
