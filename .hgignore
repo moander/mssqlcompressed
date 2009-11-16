@@ -1,11 +1,17 @@
 syntax: glob
+MSBackupPipe.VirtualBackupDevice/*.user
+ReleasePackaging/*.user
 VirtualBackupDevice/*.user
+MSSQLBackupPipe/*.user
 MSSQLBackupPipe.suo
+MSSQLBackupPipe.Common\bin\Debug/*
+MSSQLBackupPipe.Common/*.user
 x64\release/*
 release/*
 out/*
 obj/*
 debug/*
+Debug/*
 VirtualBackupDevice\x64\Release/*
 VirtualBackupDevice\x64\Debug/*
 VirtualBackupDevice\Release/*
@@ -20,3 +26,7 @@ MSSQLBackupPipe.ncb
 MSSQLBackupPipe.StdPlugins\obj/*
 MSSQLBackupPipe.StdPlugins\bin\Release/*
 MSSQLBackupPipe.StdPlugins\bin\Debug/*
+glob:MSSQLBackupPipe.suo
+glob:VirtualBackupDevice/*.user
+glob:Release/*
+glob:MSBackupPipe.Cmd/*.user
