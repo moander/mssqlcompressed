@@ -30,3 +30,8 @@ glob:MSSQLBackupPipe.suo
 glob:VirtualBackupDevice/*.user
 glob:Release/*
 glob:MSBackupPipe.Cmd/*.user
+glob:MSBackupPipe.Common/MSBackupPipe.Common.csproj.user
+glob:MSSQLBackupPipe.5.1.ReSharper.user
+glob:UpgradeLog.XML
+glob:_ReSharper.MSSQLBackupPipe/**
+glob:_UpgradeReport_Files/**
